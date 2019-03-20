@@ -4,10 +4,11 @@ var stageWidth        = 750/2;
 var stageHeight       = 1334/2;
 var ballColors        = ['#ef9a9a','#81c784','#03a9f4'];
 var ballSizeRange     = [10,100];
-var numberOfBalls     = 100;
-var ballSpeed         = 8;
+var numberOfBalls     = 10;
+var ballSpeed         = 55;
 var ballReleaseInt    = 1000;
 var lastBallReleased  = false;
+
 
 var STATE = 'play';
 
@@ -47,7 +48,7 @@ function createTitleScreen() {
   var startButton = document.createElement('button');
       startButton.id = 'startButton';
       startButton.className = 'start-button';
-      startButton.innerHTML = 'New Game';
+      startButton.innerHTML = 'Start';
   titleScreen.appendChild(startButton);
 
   appStage.appendChild(titleScreen);
@@ -92,6 +93,8 @@ function gameOverScreenInteraction() {
 function restartGame() {
     setupBalls();
     appStage.style.cursor = 'crosshair';
+    var score = document.getElementById('score');
+        score.innerHTML = 0;
     checkForGameOver();
 }
 
@@ -152,12 +155,12 @@ function createBall(_id) {
       var ballPosY = -ballSize;
       ball.style.top =  ballPosY+'px';
 
-      // var color = ballColors[randomInt(0, ballColors.length-1)];
-      // ball.style.backgroundColor = color;
-
-      ball.style.backgroundColor = 'transparent';
       var color = ballColors[randomInt(0, ballColors.length-1)];
-      ball.style.border = 'dashed 2px '+color;
+      ball.style.backgroundColor = color;
+
+      // ball.style.backgroundColor = 'transparent';
+      // var color = ballColors[randomInt(0, ballColors.length-1)];
+      // ball.style.border = 'dashed 2px '+color;
 
       ball.speed = ballSpeed;
 
@@ -185,9 +188,8 @@ function animateBall(_id) {
 
 function ballInteraction(_id) {
   var ball = document.getElementById(_id);
-  ball.onclick = function() {
+  ball.onmousedown = function() {
     if (STATE == 'pause') {} else {
-      playSound('snd/LTTP_Enemy_Hit.wav');
       removeBall(_id);
       updateScore(ball.style.width.stripPx());
     }
@@ -197,9 +199,10 @@ function ballInteraction(_id) {
 
 function removeBall(_id) {
   var ball = document.getElementById(_id);
-      ball.onclick = function() { return false; }
+      ball.onmousedown = function() { return false; }
   // ball.classList.add('flip-horizontal-bck');
   ball.classList.add('jello-horizontal');
+  // ball.style.content.stripPx()+' points';
   // ball.style.backgroundColor = 'black';
   // ball.style.border = '1px solid black';
 
@@ -207,6 +210,7 @@ function removeBall(_id) {
   var randomDir = randomInt(4,5)/10;
 
   var intervalId = setInterval(render, 16);
+  playSound('snd/LTTP_Enemy_Hit.wav');
   function render(_id) {
     if (ballSize <= 0) {
       ball.remove();
@@ -235,7 +239,7 @@ function score() {
 
 function updateScore(ballWidth) {
   var score = document.getElementById('score');
-  score.innerHTML = score.innerHTML.stripPx() + createPointsFromBallWidth(ballWidth);
+      score.innerHTML = score.innerHTML.stripPx() + createPointsFromBallWidth(ballWidth);
 }
 
 
@@ -266,21 +270,21 @@ function createPointsFromBallWidth(ballWidth) {
 }
 
 function speedController() {
-  console.log(ballSpeed);
+  // console.log(ballSpeed);
   var slider = document.createElement('div');
       slider.id = 'slidecontainer';
       slider.className = 'slidecontainer';
 
   var sliderInput = document.createElement('input');
       sliderInput.type = 'range';
-      sliderInput.min = -10;
-      sliderInput.max = -1;
+      sliderInput.min = -100;
+      sliderInput.max = -10;
       sliderInput.value = ballSpeed * -1;
       sliderInput.className = 'slider';
       sliderInput.id = 'slideRange';
       sliderInput.oninput = function() {
         ballSpeed = this.value * -1;
-        console.log(ballSpeed);
+        // console.log(ballSpeed);
       }
   slider.appendChild(sliderInput);
 
