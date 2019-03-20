@@ -4,16 +4,17 @@ var stageWidth        = 750/2;
 var stageHeight       = 1334/2;
 var ballColors        = ['#ef9a9a','#81c784','#03a9f4'];
 var ballSizeRange     = [10,100];
-var numberOfBalls     = 10;
-var ballSpeed         = 55;
+var numberOfBalls     = 5;
+var ballSpeed         = 10;
 var ballReleaseInt    = 1000;
 var lastBallReleased  = false;
 
 
-var STATE = 'play';
+var STATE = 'init';
 
 
 function init() {
+  createHud();
   setupStage();
   createTitleScreen();
   titleScreenInteraction();
@@ -27,12 +28,11 @@ function checkForGameOver() {
   var intervalId = setInterval(render, 16);
   function render() {
     if (STATE == 'pause') {
-      pauseGame();
       clearInterval(intervalId);
     } else {
       if (lastBallReleased == true && !ballContainer.hasChildNodes()) {
-        createGameOverScreen();
-        gameOverScreenInteraction();
+        STATE = 'gameover';
+        gameOver();
         clearInterval(intervalId);
       }
     }
@@ -59,50 +59,40 @@ function titleScreenInteraction() {
   var titleScreen = document.getElementById('titleScreen');
   var startButton = document.getElementById('startButton');
       startButton.onclick = function() {
-          titleScreen.remove();
-          startGame();
+          // titleScreen.remove();
+          // console.log(STATE)
+          if (STATE == 'init') {
+            startGame();
+          } else if (STATE == 'pause') {
+            resumeGame();
+          } else if (STATE == 'play') {
+            pauseGame();
+          } else if (STATE == 'gameover') {
+            startGame();
+          }
       }
 }
 
 
-function createGameOverScreen() {
-  var titleScreen = document.createElement('div');
-      titleScreen.id = 'gameOverScreen';
-      titleScreen.className = 'game-over-screen';
-
-  var startButton = document.createElement('button');
-      startButton.id = 'restartButton';
-      startButton.className = 'start-button';
-      startButton.innerHTML = 'Try Again';
-  titleScreen.appendChild(startButton);
-
-  appStage.appendChild(titleScreen);
-}
-
-
-function gameOverScreenInteraction() {
-  var gameOverScreen = document.getElementById('gameOverScreen');
-  var restartButton = document.getElementById('restartButton');
-      restartButton.onclick = function() {
-          gameOverScreen.remove();
-          restartGame();
-      }
-}
-
-
-function restartGame() {
-    setupBalls();
-    appStage.style.cursor = 'crosshair';
-    var score = document.getElementById('score');
-        score.innerHTML = 0;
-    checkForGameOver();
+function gameOver() {
+  var startButton = document.getElementById('startButton');
+      startButton.innerHTML = 'Play Again';
+      startButton.style.backgroundColor = '#039be5';
+      startButton.style.color = '#fff';
 }
 
 
 function startGame() {
+    STATE = 'play';
     setupBalls();
     appStage.style.cursor = 'crosshair';
     checkForGameOver();
+    var score = document.getElementById('score');
+        score.innerHTML = 0;
+    var startButton = document.getElementById('startButton');
+        startButton.innerHTML = 'Pause';
+        startButton.style.backgroundColor = '#fff';
+        startButton.style.color = '#444';
 }
 
 
@@ -110,6 +100,14 @@ function setupStage() {
   appStage.style.cursor = 'default';
   appStage.style.width = stageWidth + 'px';
   appStage.style.height = stageHeight + 'px';
+}
+
+
+function createHud() {
+  var hud = document.createElement('div');
+      hud.id = 'hud';
+      hud.className = 'hud';
+  appStage.appendChild(hud);
 }
 
 
@@ -170,7 +168,7 @@ function createBall(_id) {
 
 function animateBall(_id) {
   var ball = document.getElementById(_id);
-  var ballPosY = -100;
+  var ballPosY = 0;
   var intervalId = setInterval(render, ball.speed);
   function render() {
     if (STATE == 'pause') {} else {
@@ -212,16 +210,18 @@ function removeBall(_id) {
   var intervalId = setInterval(render, 16);
   playSound('snd/LTTP_Enemy_Hit.wav');
   function render(_id) {
-    if (ballSize <= 0) {
-      ball.remove();
-      clearInterval(intervalId);
-    } else {
-      ballSize--;
-      ball.style.width = ballSize + 'px';
-      ball.style.height = ballSize + 'px';
+    if (STATE == 'play') {
+      if (ballSize <= 0) {
+        ball.remove();
+        clearInterval(intervalId);
+      } else {
+        ballSize--;
+        ball.style.width = ballSize + 'px';
+        ball.style.height = ballSize + 'px';
 
-      var ballPosX = Math.round(ball.style.left.stripPx() + randomDir);
-      ball.style.left = ballPosX  + 'px';
+        var ballPosX = Math.round(ball.style.left.stripPx() + randomDir);
+        ball.style.left = ballPosX  + 'px';
+      }
     }
   }
 }
@@ -274,6 +274,7 @@ function speedController() {
   var slider = document.createElement('div');
       slider.id = 'slidecontainer';
       slider.className = 'slidecontainer';
+      slider.style.width = (stageWidth - 60) + 'px';
 
   var sliderInput = document.createElement('input');
       sliderInput.type = 'range';
@@ -299,33 +300,27 @@ function playSound(filePath) {
 
 
 function pauseGame() {
+  STATE = 'pause';
+  var startButton = document.getElementById('startButton');
+      startButton.innerHTML = 'Resume';
+      startButton.style.backgroundColor = '#039be5';
+      startButton.style.color = '#fff';
   var pauseScreen = document.createElement('div');
       pauseScreen.id = 'pauseScreen';
       pauseScreen.className = 'pause-screen';
 
-    var resumeButton = document.createElement('button');
-        resumeButton.id = 'resumeButton';
-        resumeButton.className = 'start-button';
-        resumeButton.innerHTML = 'Resume';
-
-  pauseScreen.appendChild(resumeButton);
   appStage.appendChild(pauseScreen);
 
-  pauseSreenInteraction();
-}
-
-
-function pauseSreenInteraction() {
-  var pauseScreen = document.getElementById('pauseScreen');
-  var resumeButton = document.getElementById('resumeButton');
-      resumeButton.onclick = function() {
-          resumeGame();
-      }
 }
 
 
 function resumeGame() {
-  pauseScreen.remove();
+  var startButton = document.getElementById('startButton');
+      startButton.innerHTML = 'Pause';
+      startButton.style.backgroundColor = '#fff';
+      startButton.style.color = '#444';
+  var pauseScreen = document.getElementById('pauseScreen');
+      pauseScreen.remove();
   STATE = 'play';
   checkForGameOver();
 }

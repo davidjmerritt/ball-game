@@ -9,7 +9,8 @@
 }
 
 body {
-  background-color: #f9f9f9;
+  /* background-color: #f9f9f9; */
+  background-color: #666;
   width:100%;
   height:100%;
 }
@@ -30,7 +31,7 @@ body {
   height:100%;
   background-color: #fff;
   border-radius: 25px;
-  border:1px solid #ccc;
+  border:3px solid #444;
 }
 
 .ball {
@@ -76,16 +77,21 @@ body {
 button.start-button {
   margin: 0;
   position: absolute;
-  top: 50%;
+  right: 30px;
+  top:20px;
+
+  /* top: 50%;
   left: 50%;
   -ms-transform: translate(-50%, -50%);
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%); */
 
   font-size: 16px;
   letter-spacing: 1px;
 
+  z-index:99999;
+
   display: block;
-  margin: 30px auto;
+  /* margin: 30px auto; */
   padding: 15px 30px;
 
   overflow: hidden;
@@ -93,13 +99,13 @@ button.start-button {
   border-width: 0;
   outline: none;
 
-  border-radius: 2px;
+  /* border-radius: 2px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, .6); */
   background-color: #039be5;
   color: #fff;
-  box-shadow: 0 1px 4px rgba(0, 0, 0, .6);
 
-  background-color: #fff;
-  color:#444;
+  /* background-color: #fff;
+  color:#444; */
   box-shadow: 0 1px 4px rgba(0, 0, 0, .3);
   border-radius: 30px;
 
@@ -114,15 +120,15 @@ button.start-button {
 }
 
 button.start-button:hover {
-  /* background-color: #03a9f4; */
-  background-color: #f9f9f9;
+  background-color: #03a9f4;
+  /* background-color: #f9f9f9; */
   box-shadow: 0px 2px 10px rgba(0, 0, 0, .4);
 }
 
 .score {
   position: absolute;
-  top:15px;
-  right:30px;
+  top:32px;
+  left:35px;
   font-size: 28px;
   opacity: .3;
   z-index: 999;
@@ -132,7 +138,7 @@ button.start-button:hover {
 
 .slidecontainer {
   position: absolute;
-  top:25px;
+  top:85px;
   left:30px;
   cursor: default;
   z-index: 9999;
@@ -164,9 +170,21 @@ button.start-button:hover {
 .pause-screen {
   width:100%;
   height:100%;
-  background-color: rgba(0,0,0,.4);
+  background-color: rgba(255,255,255,.4);
   display: block;
-  position: relative;
+  position: absolute;
+  top:0;
   z-index: 9999;
   cursor: default;
+}
+
+.hud {
+  position: absolute;
+  top:0;
+  left:0;
+  height:120px;
+  width:100%;
+  background-color: #f9f9f9;
+  border-bottom: 1px solid #e4e4e4;
+  z-index: 999;
 }
