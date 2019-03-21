@@ -8,4 +8,4 @@ var ballSpeedFactorRange   = [3,5];
 var numberOfBallsMin       = 10;
 var ballsMissedMax         = 3;
 
-var defaultLevel           = 4;
+var defaultLevel           = 0;
