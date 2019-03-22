@@ -23,7 +23,9 @@ The second pass improved upon the mechanics and design of the first.  The goal b
 The second pass feedback was good. I felt confident that the features were all covered and that the game was engaging, as my wife continued to play even after I didn't require any more feedback.  Always a good sign :)  
 
 ## v1.0.0
-For the third pass I wanted to focus on features that would make my game stand out. The features I had in mind were not really going to work with original code so I decided to refactor the entire project.  I took inspiration from frameworks I have used on the past and tried to build my own. I wanted to reduce the number of interval loops required to render the game to a single function that would update the entire view.  I also wanted to expand and add a few new features.
+For the third pass I wanted to focus on features that would make the game stand out and deliver a bit more of a challenge. The features I had in mind were not really going to work with original code so I decided to refactor the entire project.  I took inspiration from frameworks I have used on the past and tried to build my own. I wanted to reduce the number of interval loops required to render the game into a single function that would update the entire view at a standard game rate of 60fps.  I also wanted to expand and add a few new features.
+
+You can play the game here: http://qubitfarm.com/ball-game/
 
 ### New Features
 - Change Layout of Controls
