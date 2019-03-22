@@ -6,7 +6,7 @@ This game was created in 3 iterations over 2 days.
 ## v0.1.0
 For the first pass I wanted to create the MVP as fast as possible in order to prove out the concept.  The code quality very rough, but the basic design was in place, and all features accounted for.
 
-![Ball Game Demo v0.1.0](img/ball_game_demo_v0_1_0_1080p_24fps.gif =375x)
+![Ball Game Demo v0.1.0](img/ball_game_demo_v0_1_0_1080p_24fps.gif | width=375)
 
 ## Feedback
 I then shared the project and got some notes.  I was pretty sure the assignment was complete, but I wanted to be sure. I also wanted to get feedback on other ideas that I thought of implementing for the next iteration.  Since I was pressed for time we flagged each feature with a priority score of 1 to 3.  1 being least important 3 being most important.  We did two passes of the prioritization and then added the results from both rounds.  The features with the highest score were addressed fist. Including:
@@ -17,7 +17,7 @@ I then shared the project and got some notes.  I was pretty sure the assignment 
 ## v0.2.0
 The second pass improved upon the mechanics and design of the first.  The goal being to make the most accurate representation of what was described in the wireframe and instructions as possible, while improving on the design to make it stand out a bit.
 
-![Ball Game Demo v0.2.0](img/ball_game_demo_v0_2_0_1080p_24fps.gif =375x)
+![Ball Game Demo v0.2.0](img/ball_game_demo_v0_2_0_1080p_24fps.gif | width=375)
 
 ## Feedback
 The second pass feedback was good. I felt confident that the features were all covered and that the game was engaging, as my wife continued to play even after I didn't require any more feedback.  Always a good sign :)  
