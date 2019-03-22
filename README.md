@@ -12,7 +12,7 @@ For the first pass I wanted to create the MVP as fast as possible in order to pr
 I then shared the project and got some notes.  I was pretty sure the assignment was complete, but I wanted to be sure that I had not missed anything. I also wanted to get feedback on new ideas that I thought of implementing in the next iteration.  Since I was pressed for time we flagged each feature with a priority score of 1 to 3.  1 being least important 3 being most important.  We did two passes of the prioritization and then added the results together.  The features with the highest cumulative priority were addressed fist.
 
 ### Improvements
-- Improving the game interactions - Clicking the ball did not feel smooth.  The smaller balls seemed to be harder to click by and the player felt cheated.
+- Improving the game interactions - Clicking the ball did not feel smooth.  The smaller balls seemed to be harder to click on and the player felt cheated.
 - Checking that the speed of the balls dropping matched the requirements.
 - Layout Tweaks
 
@@ -22,7 +22,7 @@ The second pass improved upon the mechanics and design of the first.  The goal b
 <img src="img/ball_game_demo_v0_2_0_1080p_24fps.gif" width="375" height="667">
 
 ### Feedback
-The second pass feedback was good. I felt confident that the features were all covered and that the game was engaging, as my wife continued to play even after I no longer require any more feedback.  Always a good sign :)  
+The second pass feedback was good. I felt confident that the features were all covered and that the game was engaging, as my wife continued to play even after I no longer required any more feedback.  Always a good sign 😊  
 
 ## v1.0.0
 For the third pass I wanted to focus on features that would make the game stand out and deliver a bit more of a challenge. The features I had in mind were not really going to work with original code so I decided to refactor the entire project.  I took inspiration from javascript gaming frameworks I have used in the past and tried to build my own. I wanted to reduce the number of interval loops required to render the game into a single function that would update all sprites in the view at once. Making it both easier to add new features and keep the game running smoothly at a standard gaming frame rate of 60fps.  Further, my creative juices started to flow and I had new ideas on how expand the gameplay with a few new features.
@@ -40,7 +40,7 @@ You can play the game here: http://qubitfarm.com/ball-game
 
 At first, I set the goal that to be: if you miss 3 balls the game would be over... but this was a little old hat. I instead opted for a different approach.  I am a fan of 8 and 16-bit Nintendo games.  So in addition to getting points for collecting balls by clicking on them I also added a life bar that would decrease when any slipped by. Larger balls give you less points but cause more damage and smaller ones, which are harder to click, give you more points and cause less damage.  If the user is able to max out the life bar they are rewarded with different sound effect each time they capture new balls.  The game is over when the life bar is depleted.  As the player improves they get different end game messages based on the level they were able to reach.  The thought being, that players will continue to challenge the game to see new end messages.
 
-### Features that didn't make it in :(
+### Features that didn't make it in 😢
 - Effects - e.g. Wind that blows the balls around trigged at random intervals.
 - Saved Game
 - Leader Board
