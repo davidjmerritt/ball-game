@@ -8,7 +8,7 @@ For the first pass I wanted to create the MVP as fast as possible in order to pr
 
 <img src="img/ball_game_demo_v0_1_0_1080p_24fps.gif" width="375" height="667">
 
-## Feedback
+### Feedback
 I then shared the project and got some notes.  I was pretty sure the assignment was complete, but I wanted to be sure. I also wanted to get feedback on other ideas that I thought of implementing for the next iteration.  Since I was pressed for time we flagged each feature with a priority score of 1 to 3.  1 being least important 3 being most important.  We did two passes of the prioritization and then added the results from both rounds.  The features with the highest score were addressed fist. Including:
 - Improving the game interactions
 - Checking that the speed of the balls dropping matched the requirements.
