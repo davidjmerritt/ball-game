@@ -19,11 +19,13 @@ The second pass improved upon the mechanics and design of the first.  The goal b
 
 <img src="img/ball_game_demo_v0_2_0_1080p_24fps.gif" width="375" height="667">
 
-## Feedback
+### Feedback
 The second pass feedback was good. I felt confident that the features were all covered and that the game was engaging, as my wife continued to play even after I didn't require any more feedback.  Always a good sign :)  
 
 ## v1.0.0
-For the third pass I wanted to focus on features that would make my game stand out. The features I had in mind were not really going to work with original code so I decided to refactor the entire project.  I took inspiration from frameworks I have used on the past and tried to build my own. I wanted to reduce the number of interval loops required to render the game to a single function that would update the entire view.  I also wanted to expand and add the following features:
+For the third pass I wanted to focus on features that would make my game stand out. The features I had in mind were not really going to work with original code so I decided to refactor the entire project.  I took inspiration from frameworks I have used on the past and tried to build my own. I wanted to reduce the number of interval loops required to render the game to a single function that would update the entire view.  I also wanted to expand and add a few new features.
+
+### New Features
 - Change Layout of Controls
 - Add Levels - That exponential increase the speed of balls that are dropped.
 - Add More Sound Effects
@@ -34,7 +36,7 @@ For the third pass I wanted to focus on features that would make my game stand o
 
 At first I set the goal that if you miss 3 balls the game would be over... but this was a little old hat, so instead opted for a different approach.  I am a fan of 8 and 16-bit RPGs.  So in addition to getting points for collecting balls by clicking on them I also added a life bar that would decrease when any slipped by. Larger balls give you less points but cause more damage and smaller ones, which are harder to click give you more points and cause less damage.  If the user is able to max out the life bar they are rewarded with different sound effect when they click on the balls.  The game is over when the life bar is depleted.  As the player improves they get different end game messages based on the level they were able to reach.  
 
-Features that didn't make it in :(
+### Features that didn't make it in :(
 - Wind Effects - Blow the balls around the screen at random intervals
 - Saved Game
 - Leader Board
